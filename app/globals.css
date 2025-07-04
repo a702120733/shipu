@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 隐藏原生鼠标指针 */
+* {
+  cursor: none !important;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+/* v0风格的logo描边动画 */
+@keyframes drawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* v0风格的logo填充动画 */
+@keyframes fillLogo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 打字机光标闪烁动画 */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* 打字机文本样式 */
+.typewriter-text {
+  white-space: pre-wrap;
+  max-width: 100%;
+  min-height: 1em; /* 确保即使没有文本也有高度 */
+  display: inline-block; /* 确保内联元素有正确的尺寸 */
+}
+
+/* 添加字体变量 */
+@layer base {
+  :root {
+    --font-poppins: "Poppins", sans-serif;
+  }
+}
+
+.font-poppins {
+  font-family: var(--font-poppins), sans-serif !important;
+}
+
+/* 添加V0风格的描边动画 */
+.v0-stroke-animation {
+  animation: drawStroke 2s ease forwards;
+}
+
+/* 添加V0风格的填充动画 */
+.v0-fill-animation {
+  animation: fillLogo 1s ease forwards;
+}
+
+/* 文字擦除效果 - 直接应用于文本 */
+.text-wipe-container {
+  position: relative;
+  display: inline-block;
+}
+
+.text-wipe {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-poppins), sans-serif;
+  color: #3c4043;
+  text-decoration: none;
+  transition: opacity 400ms ease; /* 添加不透明度过渡效果 */
+}
+
+.text-wipe.inactive {
+  opacity: 0.3;
+}
+
+.text-wipe.active {
+  opacity: 1;
+}
+
+/* 悬停时将文本不透明度设置为100% */
+.text-wipe-container:hover .text-wipe {
+  opacity: 1;
+}
+
+/* 创建一个伪元素，包含相同的文本但完全不透明 */
+.text-wipe::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  color: #3c4043;
+  opacity: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 400ms ease;
+}
+
+/* 悬停时展开伪元素宽度，创建从左到右的擦除效果 */
+.text-wipe-container:hover .text-wipe::before {
+  width: 100%;
+  color: #3c4043;
+}
+
+/* 波纹动画 */
+@keyframes wave {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.wave {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  left: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(200, 210, 220, 0.05) 50%, transparent 100%);
+  transform-origin: center center;
+}
+
+.wave1 {
+  animation: wave 15s infinite linear;
+  opacity: 0.2;
+  transform: rotate(15deg);
+}
+
+.wave2 {
+  animation: wave 17s infinite linear;
+  opacity: 0.15;
+  transform: rotate(45deg);
+}
+
+.wave3 {
+  animation: wave 20s infinite linear;
+  opacity: 0.1;
+  transform: rotate(75deg);
+}
+
+.wave4 {
+  animation: wave 22s infinite linear;
+  opacity: 0.05;
+  transform: rotate(120deg);
+}
+
+/* 3D Card Flip Effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Carousel Animation */
+@keyframes carousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-carousel {
+  animation: carousel 30s linear infinite;
+}
+
+.animate-carousel-paused {
+  animation-play-state: paused;
+}
+
+/* Ensure smooth carousel effect - 更新为新的卡片宽度 */
+.carousel-track {
+  width: calc(384px * 12 + 32px * 11); /* 12 cards * 384px width (w-96) + 11 gaps * 32px */
+}
+
+/* 添加hover时暂停整个轨道动画的样式 */
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+/* 单独的卡片hover暂停 */
+.group:hover {
+  animation-play-state: paused;
+}
