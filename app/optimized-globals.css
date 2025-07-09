@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 优化光标性能 */
+* {
+  cursor: none !important;
+}
+
+/* 优化滚动条 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* 优化动画性能 */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 10px, 0);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+  will-change: transform;
+}
+
+/* 优化打字机光标 */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+  will-change: opacity;
+}
+
+/* 优化打字机文本 */
+.typewriter-text {
+  white-space: pre-wrap;
+  max-width: 100%;
+  min-height: 1em;
+  display: inline-block;
+  will-change: contents;
+}
+
+/* 优化字体加载 */
+@layer base {
+  :root {
+    --font-poppins: "Poppins", sans-serif;
+  }
+}
+
+.font-poppins {
+  font-family: var(--font-poppins), sans-serif !important;
+}
+
+/* 优化文字擦除效果 */
+.text-wipe-container {
+  position: relative;
+  display: inline-block;
+}
+
+.text-wipe {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-poppins), sans-serif;
+  color: #3c4043;
+  text-decoration: none;
+  transition: opacity 300ms ease;
+  will-change: opacity;
+}
+
+.text-wipe.inactive {
+  opacity: 0.3;
+}
+
+.text-wipe.active {
+  opacity: 1;
+}
+
+.text-wipe-container:hover .text-wipe {
+  opacity: 1;
+}
+
+.text-wipe::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  color: #3c4043;
+  opacity: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 300ms ease;
+  will-change: width;
+}
+
+.text-wipe-container:hover .text-wipe::before {
+  width: 100%;
+  color: #3c4043;
+}
+
+/* 优化3D卡片效果 */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* 优化轮播动画 */
+@keyframes carousel {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-carousel {
+  animation: carousel 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-carousel-paused {
+  animation-play-state: paused;
+}
+
+/* 优化轮播轨道 */
+.carousel-track {
+  width: calc(384px * 12 + 32px * 11);
+  will-change: transform;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+.group:hover {
+  animation-play-state: paused;
+}
+
+/* 添加硬件加速 */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* 优化图片加载 */
+img {
+  content-visibility: auto;
+}
+
+/* 减少重绘 */
+.no-repaint {
+  contain: layout style paint;
+}
