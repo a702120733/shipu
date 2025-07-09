@@ -30,7 +30,7 @@ export default function SimpleMatrixBackground({
       <div
         className="absolute inset-0 w-full h-full"
         style={{
-          backgroundImage: "url(/images/matrix-background-new.png)",
+          backgroundImage: "url(/images/matrix-background-latest.png)",
           backgroundRepeat: "repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -43,7 +43,7 @@ export default function SimpleMatrixBackground({
       <div
         className="absolute inset-0 w-full h-full"
         style={{
-          backgroundImage: "url(/images/matrix-background-new.png)",
+          backgroundImage: "url(/images/matrix-background-latest.png)",
           backgroundRepeat: "repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
