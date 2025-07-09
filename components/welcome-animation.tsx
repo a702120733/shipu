@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import UniversalWelcomeAnimation from "./universal-welcome-animation"
-import MatrixBackground from "./matrix-background"
+import SimpleMatrixBackground from "./simple-matrix-background"
 
 interface WelcomeAnimationProps {
   onComplete: () => void
@@ -68,13 +68,11 @@ export default function WelcomeAnimation({ onComplete, onScroll }: WelcomeAnimat
 
   return (
     <div className="fixed inset-0 z-[100] bg-black overflow-hidden">
-      {/* 字符雨背景效果 - 使用完整的MatrixBackground */}
-      <MatrixBackground
-        density={1.5} // 增加密度
-        speed={1.0} // 适中的速度
-        colors={["#FFFFFF", "#3DB7EA", "#888888", "#00FF00"]}
-        warpSpeed={true} // 启用星际穿梭效果
-        className="opacity-70" // 调整整体透明度
+      {/* 简化的字符雨背景效果 - 使用图片滚动 */}
+      <SimpleMatrixBackground
+        speed={15} // 从30秒减少到15秒，移动更快
+        opacity={0.6} // 从0.4增加到0.6，更明显
+        className="opacity-60" // 调整整体透明度类
       />
 
       {/* 主容器 - 完全居中布局 */}

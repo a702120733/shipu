@@ -103,11 +103,11 @@ export default function AboutSection({ startTyping = false, textPhase, onPhaseCo
                             () => {
                               // 动画完成
                             },
-                            45,
+                            25,
                           )
                         }, 200)
                       },
-                      50,
+                      30,
                     )
                   }, 500)
                 },

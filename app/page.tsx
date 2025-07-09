@@ -13,7 +13,6 @@ import LoadingAnimation from "@/components/loading-animation"
 import GridContainer from "@/components/grid-container"
 import Navbar from "@/components/navbar"
 import BenefitsSection from "@/components/benefits-section"
-import MatrixBackground from "@/components/matrix-background"
 
 // 导入League Spartan字体
 const leagueSpartan = League_Spartan({
@@ -242,12 +241,6 @@ export default function Home() {
       {/* 主内容 - 只有在欢迎页之后才显示 */}
       <div className={`h-full ${appState !== "loading" && appState !== "welcome" ? "opacity-100" : "opacity-0"}`}>
         <CustomCursor />
-        <MatrixBackground
-          density={1.2}
-          speed={0.8}
-          colors={["#FFFFFF", "#3DB7EA", "#888888", "#00FF00"]}
-          warpSpeed={false}
-        />
         <Navbar showLogo={true} onMenuToggle={handleMenuToggle} />
         <GridContainer>
           <div ref={containerRef} className="h-full overflow-hidden">
